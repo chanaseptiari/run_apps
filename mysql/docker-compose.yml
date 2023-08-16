@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: Mysql
+    image: docker.io/mysql:latest
+    restart: always
+    volumes:
+      - ./container-volume:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: <YourStrong@Passw0rd>
+
+volumes:
+  myData:

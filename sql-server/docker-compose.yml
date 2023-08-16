@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: SQL_Server
+    image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+    restart: always
+    volumes:
+      - sqlData:/var/opt/mssql
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: <YourStrong@Passw0rd>
+      MSSQL_PID: Express
+
+volumes:
+  sqlData:
