@@ -50,7 +50,7 @@ metadata:
   name: mysql-secret
 type: Opaque
 data:
-  mysql-root-password: PHlvdXJTdHJvbmdAUGFzc3cwcmQ=
+  mysql-root-password: PHlvdXJTdHJvbmdAUGFzc3cwcmQ= # <YourStrong@Passw0rd>
 
 ---
 apiVersion: v1
