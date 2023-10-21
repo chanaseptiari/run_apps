@@ -1,7 +1,10 @@
-# Running Apps Docker
+# Running Apps
 
-## DVWA
+## Running Configuration Database
 
-### Run DVWA
+Docker = `docker composer up`
+Podman = `podman play kube kube.yml`
 
-docker run --rm -p 8080:80 chanaseptiari/dvwa-docker
+## Running Jenkins
+
+Vagrant = `vagrant up`
