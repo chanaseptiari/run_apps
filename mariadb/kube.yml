@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-data-pvc
+  name: maria-data-pvc
 spec:
   accessModes:
     - ReadWriteOnce
@@ -13,60 +13,57 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: maria
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      app: maria
   template:
     metadata:
       labels:
-        app: mysql
+        app: maria
     spec:
       containers:
-        - name: mysql
-          image: docker.io/mysql:latest
+        - name: maria
+          image: docker.io/mariadb:latest
           ports:
             - containerPort: 3306
           env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: mysql-root-password
-            - name: MYSQL_USER
-              value: "admin"
-            - name: MYSQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: mysql-root-password
+            # - name: MARIADB_ROOT_PASSWORD_HASH
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: maria-secret
+            #       key: maria-root-password
+            - name: MARIADB_ROOT_HOST
+              value: '%'
+            - name: MARIADB_ALLOW_EMPTY_ROOT_PASSWORD
+              value: 'yes'
           volumeMounts:
-            - name: mysql-data
+            - name: maria-data
               mountPath: /var/lib/mysql
       volumes:
-        - name: mysql-data
+        - name: maria-data
           persistentVolumeClaim:
-            claimName: mysql-data-pvc
+            claimName: maria-data-pvc
 
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: mysql-secret
+  name: maria-secret
 type: Opaque
 data:
-  mysql-root-password: PHlvdXJTdHJvbmdAUGFzc3cwcmQ=
+  maria-root-password: PFlvdXJTdHJvbmdAUGFzc3cwcmQ+Cg==
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-service
+  name: maria-service
 spec:
   selector:
-    app: mysql
+    app: maria
   ports:
     - protocol: TCP
       port: 3306

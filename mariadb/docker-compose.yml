@@ -6,12 +6,12 @@ services:
     image: docker.io/mariadb:latest
     restart: always
     volumes:
-      - ./container-volume:/var/lib/mysql
+      - mariaData:/var/lib/mysql
     ports:
       - 3306:3306
     environment:
-      # MARIADB_ROOT_PASSWORD: <YourStrong@Passw0rd>
-      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: yes
+      MARIADB_ROOT_PASSWORD: YourStrong@Passw0rd
+      MARIADB_ROOT_HOST: \%
 
 volumes:
-  myData:
+  mariaData:
