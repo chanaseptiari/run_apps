@@ -68,4 +68,4 @@ metadata:
   name: sql-server-secret
 type: Opaque
 data:
-  sa-password: PFlvdXJTdHJvbmdAUGFzc3cwcmQ+ # <YourStrong@Passw0rd>
+  sa-password: PFlvdXJTdHJvbmdAUGFzc3cwcmQ+Cg== # <YourStrong@Passw0rd>

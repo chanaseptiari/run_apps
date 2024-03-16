@@ -50,7 +50,7 @@ metadata:
   name: postgresql-secret
 type: Opaque
 data:
-  postgres-password: PFlvdXJTdHJvbmdAUGFzc3cwcmQ+ # <YourStrong@Passw0rd>
+  postgres-password: PFlvdXJTdHJvbmdAUGFzc3cwcmQ+Cg== # <YourStrong@Passw0rd>
 
 ---
 apiVersion: v1
