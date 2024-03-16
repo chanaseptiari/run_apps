@@ -6,11 +6,11 @@ services:
     image: docker.io/mysql:latest
     restart: always
     volumes:
-      - ./container-volume:/var/lib/mysql
+      - mysqlData:/var/lib/mysql
     ports:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: <YourStrong@Passw0rd>
 
 volumes:
-  myData:
+  mysqlData:
